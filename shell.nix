@@ -22,7 +22,6 @@ pkgs.mkShell {
   ];
 
   shellHook = ''
-    # This is the corrected line.
     export LD_LIBRARY_PATH="${pkgs.stdenv.cc.cc.lib}/lib:${pkgs.libxml2.out}/lib:${pkgs.zlib}/lib:$LD_LIBRARY_PATH"
 
     # --- Diagnostic checks ---
@@ -41,9 +40,9 @@ pkgs.mkShell {
       IFS="$OLD_IFS"
 
       if [ "$found" -eq 1 ]; then
-        echo "✅ Found required library: $lib_name"
+        echo "Found required library: $lib_name"
       else
-        echo "❌ ERROR: Could not find required library '$lib_name'."
+        echo "ERROR: Could not find required library '$lib_name'."
       fi
     }
 
@@ -79,6 +78,6 @@ pkgs.mkShell {
     if [ -f "$HOME/export-esp.sh" ]; then
       source "$HOME/export-esp.sh"
     fi
-    echo "Nix shell is ready for ESP32 development!"
+    echo "Nix shell is ready for ESP32 development"
   '';
 }
